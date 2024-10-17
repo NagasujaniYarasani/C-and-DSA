@@ -1,0 +1,96 @@
+Email Subscription Form Integration with Google Sheets
+<!-- HTML for Email Subscription Form --><form id="emailForm">
+  <label for="email">Subscribe to our newsletter:</label>
+  <input type="email" id="email" name="email" required />
+  <button type="submit">Subscribe</button></form>
+<script>// JavaScript for Google Sheets Integrationconst form = document.getElementById('emailForm’);
+form.addEventListener('submit', (e) => {  e.preventDefault();
+    const email = document.getElementById('email').value;
+    // Google Apps Script URL  const scriptURL = 'https://script.google.com/macros/s/your_script_id/exec’;
+    fetch(scriptURL, {
+    method: 'POST’,
+    body: new URLSearchParams({ 'email': email })
+  })
+.catch(error => alert('Error! Email not submitted.’));
+});
+</script>
+
+Portfolio Page with Video Categorization
+
+<!-- HTML for Portfolio Section --><div class="portfolio">
+  <button onclick="showCategory('shortForm')">Short Form</button>
+  <button onclick="showCategory('longForm')">Long Form</button>
+  <button onclick="showCategory('gaming')">Gaming Videos</button>
+  <!-- More categories... -->
+<div id="shortForm" class="category">
+    <h3>Short Form Videos</h3>
+    <!-- Embed short form video content here -->
+  </div>
+    <div id="longForm" class="category" style="display:none;">
+    <h3>Long Form Videos</h3>
+    <!-- Embed long form video content here -->
+  </div>
+<!-- More categories... -->
+</div>
+<script>
+// JavaScript for showing video categoriesfunction showCategory(category) {
+  const categories = document.getElementsByClassName('category’);
+    for (let i = 0; i < categories.length; i++) {
+    categories[i].style.display = 'none’;
+  }
+    document.getElementById(category).style.display = 'block’;
+}
+</script>
+
+Contact Form Submission to Google Sheets
+
+<!-- HTML for Contact Form -->
+<form id="contactForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
+<label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
+    <label for="phone">Phone:</label>
+  <input type="tel" id="phone" name="phone" required />
+    <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+    <button type="submit">Submit</button></form>
+<script>
+// JavaScript for Google Sheets Integration for Contact Form
+const contactForm = document.getElementById('contactForm’);
+contactForm.addEventListener('submit', (e) => {  e.preventDefault();
+    const formData = new FormData(contactForm);
+    // Google Apps Script URL
+  const scriptURL = 'https://script.google.com/macros/s/your_script_id/exec’;
+fetch(scriptURL, {
+    method: 'POST’,
+    body: new URLSearchParams(formData)
+  })
+  .then(response => alert('Form submitted successfully!’))
+  .catch(error => alert('Error! Form not submitted.’));
+});
+</script>
+Responsive Design with CSS
+
+/* Base Styles */
+body {
+ font-family: Arial, sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Responsive Design for Mobile */
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+.portfolio button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+    .portfolio .category {
+    margin-bottom: 20px;
+  }
+}
